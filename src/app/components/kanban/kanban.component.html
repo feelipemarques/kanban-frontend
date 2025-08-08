@@ -1,0 +1,25 @@
+<h1 style="text-align: center; margin-top: 5px;">KANBAN</h1>
+    <div style="display: flex; justify-content: center;">
+        <button (click)="initAddTask()">Add task</button>
+    </div>
+    <div class="newTask" [ngStyle]="{'display': isAddingTask ? 'flex' : 'none'}">
+        <div class="new-task-container">
+            <h3>Add new task</h3>
+            <input type="text" placeholder="Task name" [(ngModel)]="newTaskName"/>
+            <button (click)="addTask()">Add</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'TO_DO')">
+            <p>TO DO</p>
+            <div class="task" *ngFor="let task of toDoTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+        </div>
+        <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'DOING')">
+            <p>DOING</p>
+            <div class="task" *ngFor="let task of doingTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+        </div>
+        <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'DONE')">
+            <p>DONE</p>
+            <div class="task" *ngFor="let task of doneTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+        </div>
+    </div>
