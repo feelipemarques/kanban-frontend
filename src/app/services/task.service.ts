@@ -24,4 +24,7 @@ export class TaskService {
     return this.http.post(this.apiUrl, taskData, { responseType: 'text' });
   }
   
+  deleteTask(taskId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${taskId}`, {responseType: 'text'})
+  }
 }

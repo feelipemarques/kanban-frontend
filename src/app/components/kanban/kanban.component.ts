@@ -23,6 +23,24 @@ export class KanbanComponent implements OnInit {
 
   constructor(private taskService:TaskService, private http:HttpClient){}
 
+  cancelAddTask() {
+    this.isAddingTask = false;
+    this.newTaskName = '';
+  }
+
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task.id).subscribe({
+      next: (response) => {
+        console.log('Task deleted successfully:', response);
+        this.loadTasks(); // Reload tasks after deletion
+      },
+      error: (error) => {
+        console.error('Error deleting task:', error);
+        alert('Failed to delete task: ' + error.message);  
+      }
+    });
+
+  }
 
   drag(event: DragEvent, task: any) {
     this.draggedTask = task;

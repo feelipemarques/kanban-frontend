@@ -1,25 +1,44 @@
 <h1 style="text-align: center; margin-top: 5px;">KANBAN</h1>
-    <div style="display: flex; justify-content: center;">
-        <button (click)="initAddTask()">Add task</button>
-    </div>
     <div class="newTask" [ngStyle]="{'display': isAddingTask ? 'flex' : 'none'}">
         <div class="new-task-container">
-            <h3>Add new task</h3>
-            <input type="text" placeholder="Task name" [(ngModel)]="newTaskName"/>
-            <button (click)="addTask()">Add</button>
+            <button class="close-button" class="close-add-button" (click)="cancelAddTask()"></button>
+            <div style="display: flex; flex-direction: column; align-items: center; gap:15px">
+                <h3>Add new task</h3>
+                <input type="text" placeholder="Task name" [(ngModel)]="newTaskName"/>
+            </div>
+            <button (click)="addTask()" class="add-task-button">Add</button>
         </div>
     </div>
     <div class="container">
         <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'TO_DO')">
-            <p>TO DO</p>
-            <div class="task" *ngFor="let task of toDoTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+            <h4>TO DO</h4>
+            <div class="tasks-wrapper">
+                <div class="task" *ngFor="let task of toDoTasks" draggable="true" (dragstart)="drag($event, task)">
+                    {{ task.taskName }}
+                    <button class="delete-btn" (click)="deleteTask(task); $event.stopPropagation(); $event.preventDefault()"></button>
+                </div>
+            </div>
         </div>
         <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'DOING')">
-            <p>DOING</p>
-            <div class="task" *ngFor="let task of doingTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+            <h4>DOING</h4>
+            <div class="tasks-wrapper">
+            <div class="task" *ngFor="let task of doingTasks" draggable="true" (dragstart)="drag($event, task)">
+                {{ task.taskName }}
+                <button class="delete-btn" (click)="$event.stopPropagation(); $event.preventDefault()"></button>
+            </div>
+            </div>
         </div>
         <div class="containerTask" (dragover)="allowDrop($event)" (drop)="drop($event, 'DONE')">
-            <p>DONE</p>
-            <div class="task" *ngFor="let task of doneTasks" draggable="true" (dragstart)="drag($event, task)">{{ task.taskName }}</div>
+            <h4>DONE</h4>
+            <div class="tasks-wrapper">
+            <div class="task" *ngFor="let task of doneTasks" draggable="true" (dragstart)="drag($event, task)">
+                {{ task.taskName }}
+                <button class="delete-btn" (click)="$event.stopPropagation(); $event.preventDefault()"></button>
+            </div>
+            </div>
+        </div>
+        <div class="addTaskButton">
+            <button (click)="initAddTask()">+</button>
         </div>
     </div>
+    

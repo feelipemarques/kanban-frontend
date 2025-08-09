@@ -1,50 +1,81 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bolder;
 }
 .container{
     margin: 10px;
     display: flex;
-    width: 98vw;
+    width: 97vw;
     justify-content: space-between;
 }
 .containerTask{
     padding: 20px 0;
     width: 31vw;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 120px);
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
+    position: relative;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerTask h4{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.tasks-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px; 
 }
 .task{
-    margin: 10px;
+    margin: 5px;
     width: 30%;
     height: 100px;
     background-color: #c1121f;
-    border-radius: 5px;
+    border-radius: 4px;
     color:white;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .task:hover{
     background-color: #ff6b6b;
     cursor: grab;
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .newTask{
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);  
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 10000; 
 }
 
 .new-task-container{
@@ -56,4 +87,111 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1000;
+    position: relative;
+    justify-content: space-around;
 }
+
+.addTaskButton{
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+.addTaskButton button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: darkcyan;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    z-index: 900;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+
+.addTaskButton button:hover{
+    background-color: #008080;
+}
+
+.close-add-button {
+    position: absolute;
+    width: 30px;             
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;  
+}
+
+.close-add-button::before,
+.close-add-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: black;
+}
+
+.close-add-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-add-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.close-add-button:hover::before,
+.close-add-button:hover::after {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.add-task-button{
+    border: none;
+    background-color: crimson;
+    padding: 10px 25px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.add-task-button:hover{
+    background-color: red;
+}
+
+.delete-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    width: 15px;
+    height: 15px;
+}
+
+.delete-btn::before,
+.delete-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background-color: white;
+}
+
+.delete-btn::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.delete-btn::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+    
