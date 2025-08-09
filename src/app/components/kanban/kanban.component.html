@@ -1,5 +1,10 @@
-<h1 style="text-align: center; margin-top: 5px;">KANBAN</h1>
-    <div class="newTask" [ngStyle]="{'display': isAddingTask ? 'flex' : 'none'}">
+<div class="header">
+    <h1 style="text-align: center; margin-top: 5px;">KANBAN</h1>
+    <a (click)="clearStorage()" routerLink="/register">
+        <img width="40px" class="logout" src="https://www.iconpacks.net/icons/2/free-exit-logout-icon-2857-thumb.png" alt="">
+    </a>
+</div>    
+<div class="newTask" [ngStyle]="{'display': isAddingTask ? 'flex' : 'none'}">
         <div class="new-task-container">
             <button class="close-button" class="close-add-button" (click)="cancelAddTask()"></button>
             <div style="display: flex; flex-direction: column; align-items: center; gap:15px">

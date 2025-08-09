@@ -15,6 +15,6 @@ export class AuthService {
   }
 
   login(credentials: {email: string, password: string}){
-    return this.httpClient.post(`${this.apiUrl}/auth/login`, credentials, {responseType: 'text'});
+    return this.httpClient.post<{token: string}>(`${this.apiUrl}/auth/login`, credentials);
   }
 }

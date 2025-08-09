@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 html,body{
-    background-color: #8ecae6;
+    background-color: #023047;
 }

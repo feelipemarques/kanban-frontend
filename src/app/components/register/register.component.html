@@ -1,6 +1,10 @@
-<form (ngSubmit)="logIn()">
-    <input type="text" placeholder="email" [(ngModel)]="email" name="email" required>
-    <input type="password" placeholder="senha" [(ngModel)]="password" name="password" required>
-    <button type="submit">Login</button>
-</form>
-<p>Não tem uma conta? <a routerLink="/register">Registrar</a></p>
+<div style="display: flex; justify-content: center; align-items: center; margin: auto; background-color: #023047;">
+    <form class="register-container" (ngSubmit)="logIn()">
+        <h1 style="text-align: center;">KANBAN - Login</h1>
+        <input type="text" placeholder="E-mail" [(ngModel)]="email" name="email" required>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+

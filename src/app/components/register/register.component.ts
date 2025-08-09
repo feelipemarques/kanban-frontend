@@ -31,10 +31,19 @@ export class RegisterComponent {
   logIn(){
     const userData = {email: this.email, password: this.password};
     this.authService.login(userData).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         console.log('User logged in successfully', response);
-        localStorage.setItem('email', this.email);
-        this.router.navigate(['/kanban']);
+
+        if(response && response.token) {
+          console.log('Token received:', response.token);
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('email', this.email);
+          this.router.navigate(['/kanban']);
+        }
+        else {
+          console.error('No token received in response');
+          alert('Login failed: No token received');
+        }
       },
       error: (error) => {
         console.error('Error logging in user', error);

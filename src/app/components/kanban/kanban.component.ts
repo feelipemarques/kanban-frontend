@@ -103,6 +103,10 @@ export class KanbanComponent implements OnInit {
     this.isAddingTask = false;
   }
 
+  clearStorage() { 
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+  }
 
   drop(event: DragEvent, newStatus: string) {
   event.preventDefault();

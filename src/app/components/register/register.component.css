@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'LemonLight';
+    src: url('/assets/fonts/LEMONMILK-Light.otf') format('opentype');
+}
+@font-face {
+    font-family: 'LemonBold';
+    src: url('/assets/fonts/LEMONMILK-Bold.otf') format('opentype');
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+div[style*="display: flex"] {
+  height: 100vh;              
+  background-color: #023047;   
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Formulário com estilo clean */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  min-width: 320px;
+  font-family: 'LemonLight', sans-serif;
+}
+
+/* Inputs estilo moderno */
+.register-container input[type="text"],
+.register-container input[type="password"] {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="password"]:focus {
+  border-color: #5c9ded;
+  box-shadow: 0 0 6px rgba(92,157,237,0.5);
+}
+
+/* Botão estilizado */
+.register-container button {
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #5c9ded;
+  color: white;
+  background-color: #ffb703;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+  background-color: #fb8500;
+}
