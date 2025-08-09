@@ -1,14 +1,26 @@
+@font-face {
+    font-family: 'LemonLight';
+    src: url('/assets/fonts/LEMONMILK-Light.otf') format('opentype');
+}
+@font-face {
+    font-family: 'LemonBold';
+    src: url('/assets/fonts/LEMONMILK-Bold.otf') format('opentype');
+}
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'LemonLight';
     font-weight: bolder;
+}
+h1{
+    font-family: 'LemonBold';
 }
 .container{
     margin: 10px;
     display: flex;
     width: 97vw;
     justify-content: space-between;
+    
 }
 .containerTask{
     padding: 20px 0;
@@ -24,12 +36,15 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    background-color: #023047;
 }
 
 .containerTask h4{
     margin-bottom: 20px;
     font-size: 1.5rem;
-    color: #333;
+    color: white;
+    
+    background-color: #023047;
 }
 
 .tasks-wrapper {
@@ -43,13 +58,12 @@
     margin: 5px;
     width: 30%;
     height: 100px;
-    background-color: #c1121f;
+    background-color: #ffb703; 
     border-radius: 4px;
     color:white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     transform: rotate(-1deg);
@@ -59,7 +73,7 @@
 }
 
 .task:hover{
-    background-color: #ff6b6b;
+    background-color: #fb8500;
     cursor: grab;
     transform: rotate(0deg) scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -89,20 +103,40 @@
     align-items: center;
     z-index: 1000;
     position: relative;
-    justify-content: space-around;
+}
+
+.new-task-container h1{
+    margin-top: 30px;
+}
+
+.new-task-container input[type="text"]{   
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.new-task-container input[type="color"]{
+    width: 50%;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .addTaskButton{
     position: absolute;
     bottom: 40px;
     right: 40px;
+    background-color: transparent;
 }
 
 .addTaskButton button{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: darkcyan;
+    background-color: #ffb703;
     color: white;
     font-size: 24px;
     border: none;
@@ -113,7 +147,7 @@
 }
 
 .addTaskButton button:hover{
-    background-color: #008080;
+    background-color: #fb8500;
 }
 
 .close-add-button {
@@ -154,10 +188,13 @@
 
 .add-task-button{
     border: none;
-    background-color: crimson;
+    background-color: #023047;
+    color: white;
+    font-family: 'LemonBold';
     padding: 10px 25px;
     border-radius: 15px;
     cursor: pointer;
+    margin-top: 20%;
 }
 
 .add-task-button:hover{

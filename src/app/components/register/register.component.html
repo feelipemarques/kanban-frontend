@@ -1,6 +1,6 @@
-<form (ngSubmit)="onRegister()">
+<form (ngSubmit)="logIn()">
     <input type="text" placeholder="email" [(ngModel)]="email" name="email" required>
     <input type="password" placeholder="senha" [(ngModel)]="password" name="password" required>
-    <button type="submit">Register</button>
+    <button type="submit">Login</button>
 </form>
-<a routerLink="/kanban">Ir para kanban</a>
+<p>Não tem uma conta? <a routerLink="/register">Registrar</a></p>

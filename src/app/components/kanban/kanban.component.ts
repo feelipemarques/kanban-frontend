@@ -14,6 +14,7 @@ export class KanbanComponent implements OnInit {
   draggedTask: any;
 
   isAddingTask: boolean = false;
+  newTaskColor: string = '#e4f663'; 
 
   toDoTasks: Task[] = [];
   doingTasks: Task[] = [];
@@ -32,7 +33,7 @@ export class KanbanComponent implements OnInit {
     this.taskService.deleteTask(task.id).subscribe({
       next: (response) => {
         console.log('Task deleted successfully:', response);
-        this.loadTasks(); // Reload tasks after deletion
+        this.loadTasks(); 
       },
       error: (error) => {
         console.error('Error deleting task:', error);
@@ -65,14 +66,17 @@ export class KanbanComponent implements OnInit {
   }
 
   addTask() {
-    this.taskService.postNewTask({taskName: this.newTaskName, userEmail: 'jade@gmail.com'}).subscribe({
+    const userEmail = localStorage.getItem('email') || '';
+    this.taskService.postNewTask({taskName: this.newTaskName, userEmail: userEmail}).subscribe({
       next: (response) => {
+        const newTaskId = response.id;
         console.log('Task added successfully:', response);
         this.newTaskName = '';
         this.loadTasks();
       },
       error: (error) => {
         console.error('Error adding task:', error);
+        alert('Name cannot be empty');
       }
     });
     this.isAddingTask = false;
@@ -87,7 +91,7 @@ export class KanbanComponent implements OnInit {
     return;
   }
 
-  const taskToUpdate = this.draggedTask; // ← Cópia local
+  const taskToUpdate = this.draggedTask;
 
   this.removeFromCurrentList(taskToUpdate);
   this.addToNewList(taskToUpdate, newStatus);
@@ -102,7 +106,7 @@ export class KanbanComponent implements OnInit {
     }
   });
 
-  this.draggedTask = null; // ← Agora tudo bem zerar aqui
+  this.draggedTask = null;
 }
 
 
