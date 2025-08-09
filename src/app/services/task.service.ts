@@ -21,7 +21,7 @@ export class TaskService {
   }
 
   postNewTask(taskData: {taskName: string, userEmail: string}): Observable<any> {
-    return this.http.post(this.apiUrl, taskData, { responseType: 'text' });
+    return this.http.post(this.apiUrl, taskData);
   }
   
   deleteTask(taskId: number): Observable<any> {

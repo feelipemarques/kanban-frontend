@@ -56,9 +56,24 @@ export class KanbanComponent implements OnInit {
   }
   
   loadTasks(): void{
-    this.taskService.getTasksByStatus('to_do').subscribe(tasks => this.toDoTasks = tasks);
-    this.taskService.getTasksByStatus('doing').subscribe(tasks => this.doingTasks = tasks);
-    this.taskService.getTasksByStatus('done').subscribe(tasks => this.doneTasks = tasks);
+    this.taskService.getTasksByStatus('to_do').subscribe(tasks => {
+      this.toDoTasks = tasks.map(task => {
+        const color = localStorage.getItem(`taskColor_${task.id}`) || '#e4f663';
+        return { ...task, color };
+      });
+    });
+    this.taskService.getTasksByStatus('doing').subscribe(tasks => {
+      this.doingTasks = tasks.map(task => {
+        const color = localStorage.getItem(`taskColor_${task.id}`) || '#e4f663';
+        return { ...task, color };
+      });
+    });
+    this.taskService.getTasksByStatus('done').subscribe(tasks => {
+      this.doneTasks = tasks.map(task => {
+        const color = localStorage.getItem(`taskColor_${task.id}`) || '#e4f663';
+        return { ...task, color };
+      });
+    });
   }
 
   initAddTask(){
@@ -67,9 +82,15 @@ export class KanbanComponent implements OnInit {
 
   addTask() {
     const userEmail = localStorage.getItem('email') || '';
-    this.taskService.postNewTask({taskName: this.newTaskName, userEmail: userEmail}).subscribe({
+    const newTaskData = {
+      taskName: this.newTaskName,
+      userEmail: userEmail
+    };
+
+    this.taskService.postNewTask(newTaskData).subscribe({
       next: (response) => {
         const newTaskId = response.id;
+        localStorage.setItem(`taskColor_${newTaskId}`, this.newTaskColor);
         console.log('Task added successfully:', response);
         this.newTaskName = '';
         this.loadTasks();
