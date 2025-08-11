@@ -3,17 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 import { KanbanComponent } from './components/kanban/kanban.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    LoginComponent,
     KanbanComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

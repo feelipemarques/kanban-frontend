@@ -1,8 +1,12 @@
 <div style="display: flex; justify-content: center; align-items: center; margin: auto; background-color: #023047;">
-    <form class="register-container" (ngSubmit)="onRegister()">
-        <h1 style="text-align: center;">KANBAN - New User</h1>
+    <form class="register-container" (ngSubmit)="logIn()">
+        <h1 style="text-align: center;">KANBAN - Login</h1>
         <input type="text" placeholder="E-mail" [(ngModel)]="email" name="email" required>
         <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
-        <button type="submit">REGISTER</button>
+        <button type="submit">Sign in</button>
+        <p class="redirect-register">Don't have an account? <a routerLink="/register">Sign up</a></p>
     </form>
+    
 </div>
+
+
