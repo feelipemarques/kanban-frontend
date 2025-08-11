@@ -13,7 +13,7 @@ export class TaskService {
   constructor(private http:HttpClient) { }
 
   getTasksByStatus(status: string): Observable<Task[]>{
-    return this.http.get<Task[]>(`${this.apiUrl}/${status}`);
+    return this.http.get<Task[]>(`${this.apiUrl}/${status}`, {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}});
   }
 
   updateTaskStatus(taskId: number, newStatus: string): Observable<any> {
@@ -21,7 +21,7 @@ export class TaskService {
   }
 
   postNewTask(taskData: {taskName: string, userEmail: string}): Observable<any> {
-    return this.http.post(this.apiUrl, taskData);
+    return this.http.post(this.apiUrl, taskData, {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}});
   }
   
   deleteTask(taskId: number): Observable<any> {

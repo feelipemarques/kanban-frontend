@@ -40,14 +40,14 @@ h1{
 .container{
     margin: 10px;
     display: flex;
-    width: 97vw;
+    width: 98.5vw;
     justify-content: space-between;
     
 }
 .containerTask{
     padding: 20px 0;
-    width: 31vw;
-    height: calc(100vh - 120px);
+    width: 32.5vw;
+    height: calc(100vh - 70px);
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -65,15 +65,14 @@ h1{
     margin-bottom: 20px;
     font-size: 1.5rem;
     color: white;
-    
     background-color: #034d72;
 }
 
 .tasks-wrapper {
-    width: 100%;
+    width: 98%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    margin-left: 10px;
     gap: 5px; 
 }
 .logout{
